@@ -80,4 +80,5 @@ CREATE TABLE `unregister_patient_data` (
         $tablename = "unregister_patient_data";
     }
 3) Added the "unregisteredPatientData" function into patient.inc code.
- 
+
+4) Nilesh last commit.
