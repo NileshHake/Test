@@ -1,0 +1,83 @@
+1) Excute below sql command on your database --
+INSERT INTO layout_group_properties(grp_form_id,grp_group_id,grp_title,grp_mapping,grp_seq,grp_activity,grp_repeats,grp_columns,grp_size,add_row) 
+VALUES('UDEM',1,'Unregistered Demographics','Core',0,1,0,0,0,'No');
+
+INSERT INTO `layout_group_properties` (`grp_form_id`, `grp_group_id`, `grp_title`, `grp_subtitle`, `grp_mapping`, `grp_seq`, `grp_activity`, `grp_repeats`, `grp_columns`, `grp_size`, `grp_issue_type`, `grp_aco_spec`, `grp_services`, `grp_products`, `grp_diags`, `add_row`, `name_of_row`) 
+VALUES('UDEM', '1', 'Who', '', '', 0, 1, 0, 0, 0, '', '', '', '', '', 'No', NULL);
+
+INSERT INTO `layout_options` (`form_id`, `field_id`, `group_id`, `title`, `seq`, `data_type`, `uor`, `fld_length`, `max_length`, `list_id`, `titlecols`, `datacols`, `default_value`, `edit_options`, `description`, `fld_rows`, `list_backup_id`, `source`, `conditions`, `validation`) VALUES
+('UDEM', 'billing_note', '1', 'Billing Note', 17, 2, 1, 60, 0, '', 1, 3, '', '', 'Patient Level Billing Note (Collections)', 0, '', 'F', '', ''),
+('UDEM', 'DOB', '1', 'DOB', 6, 4, 2, 0, 10, '', 1, 1, '', '[\"D\"]', 'Date of Birth', 0, '', 'F', '', ''),
+('UDEM', 'drivers_license', '1', 'License/ID', 9, 2, 1, 15, 63, '', 1, 1, '', '', 'Drivers License or State ID', 0, '', 'F', '', ''),
+('UDEM', 'fname', '1', '', 2, 2, 2, 10, 63, '', 0, 0, '', '[\"C\",\"D\"]', 'First Name', 0, '', 'F', '', ''),
+('UDEM', 'genericname1', '1', 'User Defined', 11, 2, 1, 15, 63, '', 1, 3, '', '', 'User Defined Field', 0, '', 'F', '', ''),
+('UDEM', 'genericname2', '1', '', 13, 2, 1, 15, 63, '', 0, 0, '', '', 'User Defined Field', 0, '', 'F', '', ''),
+('UDEM', 'genericval1', '1', '', 12, 2, 1, 15, 63, '', 0, 0, '', '', 'User Defined Field', 0, '', 'F', '', ''),
+('UDEM', 'genericval2', '1', '', 14, 2, 1, 15, 63, '', 0, 0, '', '', 'User Defined Field', 0, '', 'F', '', ''),
+('UDEM', 'lname', '1', '', 4, 2, 2, 10, 63, '', 0, 0, '', '[\"C\",\"D\"]', 'Last Name', 0, '', 'F', '', ''),
+('UDEM', 'mname', '1', '', 3, 2, 1, 2, 63, '', 0, 0, '', '[\"C\"]', 'Middle Name', 0, '', 'F', '', ''),
+('UDEM', 'pricelevel', '1', 'Price Level', 16, 1, 0, 0, 0, 'pricelevel', 1, 1, '', '', 'Discount Level', 0, '', 'F', '', ''),
+('UDEM', 'pubpid', '1', 'External ID', 5, 2, 1, 10, 15, '', 1, 1, '', '[\"D\",\"N\"]', 'External identifier', 0, '', 'F', '', ''),
+('UDEM', 'sex', '1', 'Sex', 7, 1, 2, 0, 0, 'sex', 1, 1, '', '[\"N\"]', 'Sex', 0, '', 'F', '', ''),
+('UDEM', 'squad', '1', 'Squad', 15, 13, 0, 0, 0, '', 1, 3, '', '', 'Squad Membership', 0, '', 'F', '', ''),
+('UDEM', 'ss', '1', 'S.S.', 8, 2, 1, 11, 11, '', 1, 1, '', '', 'Social Security Number', 0, '', 'F', '', ''),
+('UDEM', 'status', '1', 'Marital Status', 10, 1, 1, 0, 0, 'marital', 1, 3, '', '', 'Marital Status', 0, '', 'F', '', ''),
+('UDEM', 'title', '1', 'Name', 1, 1, 1, 0, 0, 'titles', 1, 1, '', '[\"N\"]', 'Title', 0, '', 'F', '', '');
+
+
+CREATE TABLE `unregister_patient_data` (
+  `id` bigint(20) NOT NULL,
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `language` varchar(255) NOT NULL DEFAULT '',
+  `financial` varchar(255) NOT NULL DEFAULT '',
+  `fname` varchar(255) NOT NULL DEFAULT '',
+  `lname` varchar(255) NOT NULL DEFAULT '',
+  `mname` varchar(255) NOT NULL DEFAULT '',
+  `DOB` date DEFAULT NULL,
+  `street` varchar(255) NOT NULL DEFAULT '',
+  `postal_code` varchar(255) NOT NULL DEFAULT '',
+  `city` varchar(255) NOT NULL DEFAULT '',
+  `state` varchar(255) NOT NULL DEFAULT '',
+  `country_code` varchar(255) NOT NULL DEFAULT '',
+  `drivers_license` varchar(255) NOT NULL DEFAULT '',
+  `ss` varchar(255) NOT NULL DEFAULT '',
+  `occupation` longtext,
+  `phone_home` varchar(255) NOT NULL DEFAULT '',
+  `phone_biz` varchar(255) NOT NULL DEFAULT '',
+  `phone_contact` varchar(255) NOT NULL DEFAULT '',
+  `phone_cell` varchar(255) NOT NULL DEFAULT '',
+  `pharmacy_id` int(11) NOT NULL DEFAULT '0',
+  `status` varchar(255) NOT NULL DEFAULT '',
+  `contact_relationship` varchar(255) NOT NULL DEFAULT '',
+  `date` datetime DEFAULT NULL,
+  `sex` varchar(255) NOT NULL DEFAULT '',
+  `referrer` varchar(255) NOT NULL DEFAULT '',
+  `referrerID` varchar(255) NOT NULL DEFAULT '',
+  `providerID` int(11) DEFAULT NULL,
+  `ref_providerID` int(11) DEFAULT NULL,
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `email_direct` varchar(255) NOT NULL DEFAULT '',
+  `ethnoracial` varchar(255) NOT NULL DEFAULT '',
+  `race` varchar(255) NOT NULL DEFAULT '',
+  `ethnicity` varchar(255) NOT NULL DEFAULT '',
+  `religion` varchar(40) NOT NULL DEFAULT '',
+  `interpretter` varchar(255) NOT NULL DEFAULT '',
+  `migrantseasonal` varchar(255) NOT NULL DEFAULT '',
+  `family_size` varchar(255) NOT NULL DEFAULT '',
+  `monthly_income` varchar(255) NOT NULL DEFAULT '',
+  `billing_note` text,
+  `pubpid` varchar(255) NOT NULL DEFAULT '',
+  `patient_id` bigint(20) NOT NULL DEFAULT '0',
+  `genericname1` varchar(255) NOT NULL DEFAULT '',
+  `genericval1` varchar(255) NOT NULL DEFAULT '',
+  `genericname2` varchar(255) NOT NULL DEFAULT '',
+  `genericval2` varchar(255) NOT NULL DEFAULT ''
+ );
+
+2) Add below code into /openemr/interface/super/edit_layout.php the line number 220 --
+
+	elseif($layout_id == "UDEM"){
+        $tablename = "unregister_patient_data";
+    }
+3) Added the "unregisteredPatientData" function into patient.inc code.
+ 
